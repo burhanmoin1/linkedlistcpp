@@ -75,21 +75,44 @@ void printList(Node* head) {
     cout << "nullptr" << endl;
 }
 
+// int main() {
+//     Node* head = nullptr;
+
+//     insertAtEnd(head, 10);
+//     insertAtEnd(head, 20);
+//     insertAtEnd(head, 30);
+//     insertAtBeginning(head, 5);
+
+//     printList(head);
+//     cout << "Count: " << countNodes(head) << endl;
+
+//     deleteNode(head, 20);
+//     printList(head);
+
+//     cout << "Search 10: " << (search(head, 10) ? "Found" : "Not Found") << endl;
+
+//     return 0;
+// }
+
 int main() {
-    Node* head = nullptr;
+    // Create individual nodes
+    Node* first = new Node(10);
+    Node* second = new Node(20);
+    Node* third = new Node(30);
 
-    insertAtEnd(head, 10);
-    insertAtEnd(head, 20);
-    insertAtEnd(head, 30);
-    insertAtBeginning(head, 5);
+    // Link them together
+    first->next = second;
+    second->next = third;
+    third->next = nullptr;  // Last node
 
-    printList(head);
-    cout << "Count: " << countNodes(head) << endl;
-
-    deleteNode(head, 20);
-    printList(head);
-
-    cout << "Search 10: " << (search(head, 10) ? "Found" : "Not Found") << endl;
+    // Print the list
+    Node* temp = first;
+    while (temp != nullptr) {
+        std::cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    std::cout << "nullptr";  // Output: 10 -> 20 -> 30 -> nullptr
 
     return 0;
 }
+
